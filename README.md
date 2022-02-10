@@ -8,7 +8,5 @@ You need to recursively traverse a given directory and hash every file you find.
 
 ## Solutions
 
-> Test data  
-> A directory with ~400 PDF files (3.6 GB)
-
-- [JavaScript](./index.js) (took 1m 40s)
+- [Node.js](./index.js)
+- [GoLang](./main.go)
