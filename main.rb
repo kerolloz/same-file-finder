@@ -7,11 +7,7 @@ class HashStorage
   end
 
   def add_hash(hash, file_path)
-    if @storage[hash]
-      @storage[hash] << file_path
-    else
-      @storage[hash] = [file_path]
-    end
+    @storage[hash] ? @storage[hash] << file_path : @storage[hash] = [file_path]
   end
 
   def get_similar
@@ -39,15 +35,13 @@ if ARGV.length != 1
 end
 
 dir = ARGV[0]
+is_valid_dir = dir && Dir.exist?(dir)
+abort("Please provide a valid directory path") unless is_valid_dir
 
-if dir && Dir.exist?(dir)
-  hash_storage = HashStorage.new
-  read_dir(dir).each do |file|
-    hash_storage.add_hash(get_file_hash(file), file)
-  end
-  puts hash_storage.get_similar.inspect
-  exit(0)
-else
-  puts "Please provide a valid directory path"
-  exit(-1)
+hash_storage = HashStorage.new
+read_dir(dir).each do |file|
+  hash_storage.add_hash(get_file_hash(file), file)
 end
+
+puts hash_storage.get_similar.inspect
+exit(0)
