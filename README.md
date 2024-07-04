@@ -10,3 +10,5 @@ You need to recursively traverse a given directory and hash every file you find.
 
 - [Node.js](./index.js)
 - [GoLang](./main.go)
+- [Ruby](./main.rb)
+- [Bash](./script.sh)
